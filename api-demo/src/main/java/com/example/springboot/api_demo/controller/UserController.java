@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-// import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.PostMapping;
 // import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,12 +27,12 @@ public class UserController {
 		return ResponseEntity.ok(users);
 	}
 
-    // @GetMapping("/{id}")
-    // public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long id) {
-	//  // TODO: ユーザーを取得する
-	// 	final UserResponseDto user = this.usecase.findUserById(id);
-	// 	return ResponseEntity.ok(user);
-    // }
+    @GetMapping("/{id}")
+    public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long id) {
+	 // TODO: ユーザーを取得する
+		final UserResponseDto user = this.usecase.findUserById(id);
+		return ResponseEntity.ok(user);
+    }
 
 	// @PostMapping
     // public ResponseEntity<UserResponseDto> createUser(@RequestBody UserRequestDto dto) {

@@ -2,7 +2,6 @@ package com.example.springboot.api_demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
-// import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,5 +34,11 @@ public class UserService implements UserServiceInterface {
         // .stream()
         // .map(entity -> mapper.mapToDto(entity))
         // .collect(Collectors.toList());
+    }
+
+    @Override
+    public UserResponseDto findUserById(Long id) {
+        var entity = repository.findById(id).get();
+        return mapper.mapToDto(entity);
     }
 }
