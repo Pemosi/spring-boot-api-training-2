@@ -16,4 +16,9 @@ public class UserUsecase implements UserUsecaseInterface {
     public List<UserResponseDto> findUserList() {
         return service.findUserList();
     }
+
+    @Override
+    public UserResponseDto findUserById(Long id) {
+        return service.findUserById(id);
+    }
 }
