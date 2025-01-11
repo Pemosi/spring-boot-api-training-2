@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.springboot.api_demo.dto.UserRequestDto;
 import com.example.springboot.api_demo.dto.UserResponseDto;
 import com.example.springboot.api_demo.entity.UserEntity;
 import com.example.springboot.api_demo.repository.UserRepository;
@@ -40,5 +41,16 @@ public class UserService implements UserServiceInterface {
     public UserResponseDto findUserById(Long id) {
         var entity = repository.findById(id).get();
         return mapper.mapToDto(entity);
+    }
+
+    @Override
+    public UserResponseDto addUser(UserRequestDto dto) {
+        var entity = UserEntity
+        .builder()
+        .name(dto.getName())
+        .email(dto.getEmail())
+        .isActive(dto.isActive())
+        .build();
+        return mapper.mapToDto(repository.save(entity));
     }
 }
