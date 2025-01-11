@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.springboot.api_demo.dto.UserRequestDto;
-import com.example.springboot.api_demo.dto.UserResponseDto;
+import com.example.springboot.api_demo.dto.user.UserRequestDto;
+import com.example.springboot.api_demo.dto.user.UserResponseDto;
 import com.example.springboot.api_demo.service.UserService;
 
 @Component
