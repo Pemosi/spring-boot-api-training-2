@@ -56,4 +56,14 @@ public class UserService implements UserServiceInterface {
         .build();
         return mapper.mapToDto(repository.save(entity));
     }
+
+    @Override
+    public boolean switchUserActiveById(Long id) {
+        final var oldEntity = repository.findById(id)
+            .orElseThrow(() -> new NoSuchElementException("指定されたIDのユーザーは存在しません。"));
+
+        oldEntity.setActive(!oldEntity.isActive());
+        final var neEntity = repository.save(oldEntity);
+        return neEntity.isActive();
+    }
 }
