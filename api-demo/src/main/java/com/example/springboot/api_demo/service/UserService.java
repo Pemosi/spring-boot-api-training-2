@@ -23,6 +23,7 @@ public class UserService implements UserServiceInterface {
     public UserRepository repository;
 
     // ユーザー情報取得 - 一覧
+    @Override
     public List<UserResponseDto> findUserList() {
         // 拡張for文による書き方
         List<UserResponseDto> userDtoList = new ArrayList<>();
