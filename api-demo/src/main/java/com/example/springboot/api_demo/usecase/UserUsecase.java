@@ -14,6 +14,7 @@ public class UserUsecase implements UserUsecaseInterface {
     @Autowired
     UserService service;
 
+    @Override
     public List<UserResponseDto> findUserList() {
         return service.findUserList();
     }
@@ -26,5 +27,10 @@ public class UserUsecase implements UserUsecaseInterface {
     @Override
     public UserResponseDto addUser(UserRequestDto dto) {
         return service.addUser(dto);
+    }
+
+    @Override
+    public boolean switchUserActiveById(Long id) {
+        return service.switchUserActiveById(id);
     }
 }
