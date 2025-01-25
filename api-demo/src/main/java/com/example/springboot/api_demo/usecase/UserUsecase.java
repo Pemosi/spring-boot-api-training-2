@@ -33,4 +33,10 @@ public class UserUsecase implements UserUsecaseInterface {
     public boolean switchUserActiveById(Long id) {
         return service.switchUserActiveById(id);
     }
+
+    @Override
+    public boolean deleteUserById(Long id) {
+        return service.deleteUserById(id);
+    }
+
 }
