@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import com.example.springboot.api_demo.dto.user.UserRequestDto;
 import com.example.springboot.api_demo.dto.user.UserResponseDto;
 import com.example.springboot.api_demo.usecase.UserUsecase;
 
+@Validated
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -30,7 +32,7 @@ public class UserController {
 	}
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserResponseDto> getUserById(@PathVariable Long id) {
+    public ResponseEntity<UserResponseDto> getUserById(@PathVariable("id") Long id) {
 		final UserResponseDto user = this.usecase.findUserById(id);
 		return ResponseEntity.ok(user);
     }
@@ -42,7 +44,7 @@ public class UserController {
     }
 
 	@PatchMapping("/{id}/switchActive")
-    public ResponseEntity<Boolean> updateUserActive(@PathVariable Long id) {
+    public ResponseEntity<Boolean> updateUserActive(@PathVariable("id") Long id) {
         final boolean isActive = this.usecase.switchUserActiveById(id);
         return ResponseEntity.ok(isActive);
     }
@@ -52,8 +54,9 @@ public class UserController {
 	// 	// TODO: 指定したIDのユーザーを更新する
     // }
 
-    // @DeleteMapping("/{id}")
-    // public ResponseEntity<Void> deleteUser(@PathVariable Integer id) {
-	// 	// TODO: 指定したIDのユーザーを削除する
-    // }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Boolean> deleteUser(@PathVariable("id") Long id) {
+        final boolean deleteUser = this.usecase.deleteUserById(id);
+    	return ResponseEntity.ok(deleteUser);
+    }
 }
